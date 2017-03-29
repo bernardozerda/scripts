@@ -38,7 +38,15 @@ if (! is_dir(DESTINO_BACKUP_BD)) {
     if ($aptDirectorio = opendir(DESTINO_BACKUP_BD)) {
         while (($txtArchivo = readdir($aptDirectorio)) !== false) {
             if($txtArchivo != "." and $txtArchivo != ".."){
-                echo $txtArchivo . " ===> " . date("Y-m-d",filemtime(DESTINO_BACKUP_BD . "/" . $txtArchivo)) ."\r\n";
+                $numFechaArchivo = filemtime(DESTINO_BACKUP_BD . "/" . $txtArchivo);
+                
+                $numFechaRetencion = strtotime("-" . DIAS_RETENCION . " day" ); 
+                
+                echo $numFechaRetencion . " ==> " . date( "Y-m-d" , $numFechaRetencion ) . "\r\n";
+                
+                
+                
+                
             }
         }
         closedir($aptDirectorio);

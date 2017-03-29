@@ -12,7 +12,7 @@
     define("CLAVE_BD", "Ochochar*1");
     define("NOMBRE_BD", "sdht_subsidios");
     define("DESTINO_BACKUP_BD", "/home/sdvpruebas/backups/produccion");
-    define("DIAS_RETENCION", 0);
+    define("DIAS_RETENCION", 2);
     
     /**
      * FUNCION PARA IMPRIMIR LOS MENSAJES DE LOG
