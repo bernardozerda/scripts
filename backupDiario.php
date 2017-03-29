@@ -9,6 +9,7 @@
 
 // Archivo de funciones
 chdir("/home/sdvpruebas/backups/scripts");
+
 include ("./funciones.php");
 
 // Verifica la existencia de la carpeta de backups DESTINO_BACKUP_BD
