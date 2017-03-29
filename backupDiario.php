@@ -37,7 +37,9 @@ if (! is_dir(DESTINO_BACKUP_BD)) {
     $txtArchivo = "";
     if ($aptDirectorio = opendir(DESTINO_BACKUP_BD)) {
         while (($txtArchivo = readdir($aptDirectorio)) !== false) {
-            echo "nombre archivo: $txtArchivo \r\n";
+            if($txtArchivo != "." and $txtArchivo != ".."){
+                echo "nombre archivo: $txtArchivo \r\n";
+            }
         }
         closedir($aptDirectorio);
     }
