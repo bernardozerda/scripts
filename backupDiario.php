@@ -19,7 +19,7 @@
     
     $txtSalida = "";
     mensajeLog("Inicia compresion del backup " . $txtArchivo);
-    $txtComando = "mysqldump -u" . USUARIO_BD . " -p" . CLAVE_BD . " -h" . SERVIDOR_PRODUCCION . " " . NOMBRE_BD . " > " . DESTINO_BACKUP_BD . "/" . date("Ymd") . "-sdht_subsidios.sql";
+    $txtComando = "tar -zcvf " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
     $txtSalida = shell_exec($txtComando);
     mensajeLog("Termina compresion del backup " . $txtArchivo);
 
