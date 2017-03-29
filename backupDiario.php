@@ -39,14 +39,12 @@ if (! is_dir(DESTINO_BACKUP_BD)) {
         while (($txtArchivo = readdir($aptDirectorio)) !== false) {
             if($txtArchivo != "." and $txtArchivo != ".."){
                 $numFechaArchivo = filemtime(DESTINO_BACKUP_BD . "/" . $txtArchivo);
-                
                 $numFechaRetencion = strtotime("-" . DIAS_RETENCION . " day" ); 
-                
-                echo $numFechaRetencion . " ==> " . date( "Y-m-d" , $numFechaRetencion ) . "\r\n";
-                
-                
-                
-                
+                if( $numFechaArchivo < $numFechaRetencion ){
+                    $txtComando = "rm -f " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
+                    $txtSalida = shell_exec($txtComando);
+                    mensajeLog("Archivo " . $txtArchivo . " eliminado");
+                }
             }
         }
         closedir($aptDirectorio);
