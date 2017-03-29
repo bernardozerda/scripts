@@ -10,12 +10,10 @@
     // Archivo de funciones
     include( getcwd() . "/funciones.php");
     
+    mensajeLog("Inicia el backup de " . NOMBRE_BD);
     $txtComando = "mysqldump -u" . USUARIO_BD . " -p" . CLAVE_BD . " -h" . SERVIDOR_PRODUCCION . " " . NOMBRE_BD . " > " . DESTINO_BACKUP_BD . "/" . date("Ymd") . "-sdht_subsidios.sql";
-    
-    echo $txtComando . "\r\n";
-
-    //$txtSalida = shell_exec($txtComando);
-    
+    $txtSalida = shell_exec($txtComando);
+    mensajeLog("Termina el backup de " . NOMBRE_BD);
     
 
 
