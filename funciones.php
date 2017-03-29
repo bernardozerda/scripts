@@ -21,7 +21,7 @@
      */
     
     function mensajeLog($txtMensaje){
-        echo date("YYYY-m-d H:i:s") . " | " . $txtMensaje . "\r\n";
+        echo date("Y-m-d H:i:s") . " | " . $txtMensaje . "\r\n";
     }
 
 ?>
