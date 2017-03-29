@@ -20,19 +20,16 @@ if (! is_dir(DESTINO_BACKUP_BD)) {
     mensajeLog("Inicia el backup de " . NOMBRE_BD);
     $txtArchivo = date("Ymd") . "-sdht_subsidios.sql";
     $txtComando = "mysqldump -u" . USUARIO_BD . " -p" . CLAVE_BD . " -h" . SERVIDOR_PRODUCCION . " " . NOMBRE_BD . " > " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
-    exec($txtComando,$arrSalida);
-    print_r($arrSalida);
+    exec($txtComando);
     mensajeLog("Termina el backup de " . NOMBRE_BD);
     
     // Comprime el backup generado
     $arrSalida = array();
     mensajeLog("Inicia compresion del backup " . $txtArchivo);
     $txtComando = "tar -zcvf " . DESTINO_BACKUP_BD . "/" . substr($txtArchivo, 0, strlen($txtArchivo) - 4) . ".tar.gz " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
-    exec($txtComando,$arrSalida);
-    print_r($arrSalida);
+    exec($txtComando);
     $txtComando = "rm -f " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
-    exec($txtComando,$arrSalida);
-    print_r($arrSalida);
+    exec($txtComando);
     mensajeLog("Termina compresion del backup " . $txtArchivo);
     
     // Limpia los backups de antes de DIAS_RETENCION dias (configurado en funciones.php)
@@ -45,8 +42,7 @@ if (! is_dir(DESTINO_BACKUP_BD)) {
                 $numFechaRetencion = strtotime("-" . DIAS_RETENCION . " day" ); 
                 if( $numFechaArchivo < $numFechaRetencion ){
                     $txtComando = "rm -f " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
-                    exec($txtComando,$arrSalida);
-                    print_r($arrSalida);
+                    exec($txtComando);
                     mensajeLog("\tArchivo " . $txtArchivo . " eliminado");
                 }
             }
