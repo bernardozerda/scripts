@@ -10,7 +10,7 @@
     // Archivo de funciones
     include( getcwd() . "/funciones.php");
     
-    $txtComando = "mysqldump -u" . USUARIO_BD . " -p" . CLAVE_BD . " -h" . SERVIDOR_PRODUCCION . " " . NOMBRE_BD . " > " . DESTINO_BACKUP_BD . "/" . date("Y-m-d") . "-sdht_subsidios.sql";
+    $txtComando = "mysqldump -u" . USUARIO_BD . " -p" . CLAVE_BD . " -h" . SERVIDOR_PRODUCCION . " " . NOMBRE_BD . " > " . DESTINO_BACKUP_BD . "/" . date("Ymd") . "-sdht_subsidios.sql";
     
     echo $txtComando . "\r\n";
 
