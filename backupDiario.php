@@ -20,8 +20,7 @@
     $txtSalida = "";
     mensajeLog("Inicia compresion del backup " . $txtArchivo);
     $txtComando = "tar -zcvf " . DESTINO_BACKUP_BD . "/" . substr($txtArchivo, 0, strlen($txtArchivo) - 4) . ".tar.gz "  . DESTINO_BACKUP_BD . "/" . $txtArchivo ;
-    echo $txtComando . "\r\n";
-    //$txtSalida = shell_exec($txtComando);
+    $txtSalida = shell_exec($txtComando);
     mensajeLog("Termina compresion del backup " . $txtArchivo);
 
 
