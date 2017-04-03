@@ -43,9 +43,12 @@ if (! is_dir(DESTINO_BACKUP_BD)) {
                 $numFechaArchivo = filemtime(DESTINO_BACKUP_BD . "/" . $txtArchivo);
                 $numFechaRetencion = strtotime("-" . DIAS_RETENCION . " day" ); 
                 if( $numFechaArchivo < $numFechaRetencion ){
-                    $txtComando = "rm -f " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
-                    exec($txtComando);
-                    mensajeLog("\tArchivo " . $txtArchivo . " eliminado");
+                	if( intval(substr($txtArchivo,6,2)) != DIA_BLOQUEADO ){ // Nunca borrara los backup del primer dia del mes
+                		$txtComando = "rm -f " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
+                		exec($txtComando);
+                		mensajeLog("\tArchivo " . $txtArchivo . " eliminado");
+                		
+                	}
                 }
             }
         }
