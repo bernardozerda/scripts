@@ -21,7 +21,7 @@ if (! is_dir(DESTINO_BACKUP_BD)) {
     $arrSalida = array();
     mensajeLog("Inicia el backup de " . NOMBRE_BD);
     $txtArchivo = date("Ymd") . "-sdht_subsidios.sql";
-    $txtComando = "mysqldump -u" . USUARIO_BD . " -p" . CLAVE_BD . " -h" . SERVIDOR_PRODUCCION . " " . NOMBRE_BD . " > " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
+    $txtComando = "mysqldump --routines -u" . USUARIO_BD . " -p" . CLAVE_BD . " -h" . SERVIDOR_PRODUCCION . " " . NOMBRE_BD . " > " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
     exec($txtComando);
     mensajeLog("Termina el backup de " . NOMBRE_BD);
     
