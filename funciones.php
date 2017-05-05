@@ -10,7 +10,7 @@
     define("SERVIDOR_PRODUCCION", "192.168.6.214");
     define("USUARIO_BD", "sdht_usuario");
     define("CLAVE_BD", "Ochochar*1");
-    define("NOMBRE_BD", "sdht_subsidios");
+    define("NOMBRE_BD", "sipive");
     define("DESTINO_BACKUP_BD", "/home/sdvpruebas/backups/produccion");
     define("DIAS_RETENCION", 180);
     define("DIA_BLOQUEADO", 1);

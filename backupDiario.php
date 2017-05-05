@@ -20,7 +20,7 @@ if (! is_dir(DESTINO_BACKUP_BD)) {
     // Genera el backup directo de produccion
     $arrSalida = array();
     mensajeLog("Inicia el backup de " . NOMBRE_BD);
-    $txtArchivo = date("Ymd") . "-sdht_subsidios.sql";
+    $txtArchivo = date("Ymd") . "-sipive.sql";
     $txtComando = "mysqldump --routines -u" . USUARIO_BD . " -p" . CLAVE_BD . " -h" . SERVIDOR_PRODUCCION . " " . NOMBRE_BD . " > " . DESTINO_BACKUP_BD . "/" . $txtArchivo;
     exec($txtComando);
     mensajeLog("Termina el backup de " . NOMBRE_BD);
