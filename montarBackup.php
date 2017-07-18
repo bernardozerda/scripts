@@ -30,6 +30,11 @@ if( file_exists( DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".tar.gz" )){
     mensajeLog($txtComando);
     //exec($txtComando);
 
+    mensajeLog("Limpiando archivos");
+    $txtComando = "rm -rf " . DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".sql";
+    mensajeLog($txtComando);
+    //exec($txtComando);
+
 }else{
     mensajeLog("No se encontró el backup " . $txtNombreArchivoTar);
 }
