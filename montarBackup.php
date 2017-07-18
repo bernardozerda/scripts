@@ -12,11 +12,19 @@ chdir("/home/sdvpruebas/backups/scripts");
 
 include ("./funciones.php");
 
-$txtNombreArchivoTar = date("Ymd") . "-sipive.tar.gz";
-if( file_exists( DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar )){
+$txtNombreArchivoTar = date("Ymd") . "-sipive";
+if( file_exists( DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".tar.gz" )){
 
-    $txtComando = "tar -zxvf " . DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar;
-    mensajeLog( $txtComando );
+    mensajeLog("Descomprimiendo backup " . $txtNombreArchivoTar );
+    $txtComando = "tar -zxvf " . DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".tar.gz";
+    //exec($txtComando);
+
+    mensajeLog("Reemplaza " . NOMBRE_BD . " por sipive_capacitacion");
+    $txtComando = "sed -i 's/" . NOMBRE_BD . "/sipive_capacitacion/g' " .  DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".sql";
+    //exec($txtComando);
+
+    mensajeLog("Montando la base de datos");
+    $txtComando = "mysql -u" . USUARIO_BD . " -p" . CLAVE_BD . " sipive_capacitacion < " . DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".sql";
     //exec($txtComando);
 
 }else{
