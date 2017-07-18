@@ -16,7 +16,7 @@ $txtNombreArchivoTar = date("Ymd") . "-sipive";
 if( file_exists( DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".tar.gz" )){
 
     mensajeLog("Descomprimiendo backup " . $txtNombreArchivoTar );
-    $txtComando = "tar -zxvf " . DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".tar.gz";
+    $txtComando = "tar -zxvf " . DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".tar.gz -C /";
     mensajeLog($txtComando);
     //exec($txtComando);
 
