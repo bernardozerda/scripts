@@ -26,18 +26,18 @@ if( $txtBaseDatosDestino != ""){
 	
     		mensajeLog("Reemplaza " . NOMBRE_BD . " por " . $txtBaseDatosDestino);
     		$txtComando = "sed -i 's/`" . NOMBRE_BD . "/`" . $txtBaseDatosDestino . "/g' " .  DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".sql";
-    		mensajeLog($txtComando);
-    		//exec($txtComando);
+    		//mensajeLog($txtComando);
+    		exec($txtComando);
 	
     		mensajeLog("Montando la base de datos");
     		$txtComando = "mysql -u" . USUARIO_BD . " -p" . CLAVE_BD . " " . $txtBaseDatosDestino . " < " . DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".sql";
-    		mensajeLog($txtComando);
-    		//exec($txtComando);
+    		//mensajeLog($txtComando);
+    		exec($txtComando);
 	
     		mensajeLog("Limpiando archivos");
     		$txtComando = "rm -rf " . DESTINO_BACKUP_BD . "/" . $txtNombreArchivoTar . ".sql";
-    		mensajeLog($txtComando);
-    		//exec($txtComando);
+    		//mensajeLog($txtComando);
+    		exec($txtComando);
 
 	}else{
     		mensajeLog("No se encontró el backup " . $txtNombreArchivoTar);
