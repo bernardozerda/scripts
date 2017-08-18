@@ -11,8 +11,8 @@
     
     // CONEXION A LA BASE DE DATOS LOCAL
     try {
-        $aptPruebas = &ADONewConnection("mysql");
-        $aptPruebas->PConnect("192.168.3.94", "sdht_subsidios", "Ochochar*1", "sdht_subsidios");
+        $aptPruebas = ADONewConnection("mysqli");
+        $aptPruebas->PConnect("192.168.3.94", "sdht_subsidios", "Ochochar*1", "sipive_pruebas");
         $aptPruebas->SetFetchMode(ADODB_FETCH_ASSOC); // solo respuestas con arreglos asociativos
         $sql = "SET CHARSET utf8";
         $aptPruebas->execute($sql);
