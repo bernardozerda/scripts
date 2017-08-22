@@ -29,33 +29,33 @@ if( $bolErrores == false ){
  * COPIA DEL MODULO DE HOGARES
  *****************************************************************************************/
 
-//if( $bolErrores == false ) {
-//    $bolErrores = copiarFormularios($aptLocal, $seqCorte, $arrHogares);
-//}
-//
-//if( $bolErrores == false ) {
-//    $bolErrores = copiarCiudadanos($aptLocal, $seqCorte, $arrHogares);
-//}
-//
-//if( $bolErrores == false ) {
-//    $bolErrores = armarHogar($aptLocal, $seqCorte, $arrHogares);
-//}
-//
-///*****************************************************************************************
-// * COPIA DEL MODULO DE DESEMBOLSOS
-// *****************************************************************************************/
-//
-//if( $bolErrores == false ) {
-//    $bolErrores = copiarDesembolso($aptLocal, $seqCorte, $arrHogares);
-//}
-//
-//if( $bolErrores == false ) {
-//    $bolErrores = copiarEscrituracion($aptLocal, $seqCorte, $arrHogares);
-//}
-//
-//if( $bolErrores == false ) {
-//    $bolErrores = copiarSolicitudes($aptLocal, $seqCorte, $arrHogares);
-//}
+if( $bolErrores == false ) {
+    $bolErrores = copiarFormularios($aptLocal, $seqCorte, $arrHogares);
+}
+
+if( $bolErrores == false ) {
+    $bolErrores = copiarCiudadanos($aptLocal, $seqCorte, $arrHogares);
+}
+
+if( $bolErrores == false ) {
+    $bolErrores = armarHogar($aptLocal, $seqCorte, $arrHogares);
+}
+
+/*****************************************************************************************
+ * COPIA DEL MODULO DE DESEMBOLSOS
+ *****************************************************************************************/
+
+if( $bolErrores == false ) {
+    $bolErrores = copiarDesembolso($aptLocal, $seqCorte, $arrHogares);
+}
+
+if( $bolErrores == false ) {
+    $bolErrores = copiarEscrituracion($aptLocal, $seqCorte, $arrHogares);
+}
+
+if( $bolErrores == false ) {
+    $bolErrores = copiarSolicitudes($aptLocal, $seqCorte, $arrHogares);
+}
 
 /*****************************************************************************************
  * COPIA DEL MODULO DE PROYECTOS
