@@ -26,7 +26,27 @@ if( $bolErrores == false ) {
 }
 
 if( $bolErrores == false ) {
-    $bolErrores = armarHogar($aptLocal, $arrHogares);
+    $bolErrores = armarHogar($aptLocal, $seqCorte, $arrHogares);
+}
+
+if( $bolErrores == false ) {
+    $bolErrores = copiarProyectos($aptLocal, $seqCorte);
+}
+
+if( $bolErrores == false ) {
+    $bolErrores = copiarUnidades($aptLocal, $seqCorte);
+}
+
+if( $bolErrores == false ) {
+    $bolErrores = copiarDesembolso($aptLocal, $seqCorte, $arrHogares);
+}
+
+if( $bolErrores == false ) {
+    $bolErrores = copiarEscrituracion($aptLocal, $seqCorte, $arrHogares);
+}
+
+if( $bolErrores == false ) {
+    $bolErrores = copiarSolicitudes($aptLocal, $seqCorte, $arrHogares);
 }
 
 if( $bolErrores == false ){
@@ -36,6 +56,6 @@ if( $bolErrores == false ){
 }
 
 $aptLocal->Close();
-mensajeLog("Fin de la creacion del corte de " . date("F Y"));
+mensajeLog("Fin de la creacion del corte de " . mes2texto(date("m")) . " " . date("Y") );
 
 ?>
