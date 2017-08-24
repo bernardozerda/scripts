@@ -1253,8 +1253,7 @@ function copiarProyectos($aptBd, $seqCorte)
                 pry.fchUltimaActualizacion,
                 pry.bolActivo
             from t_pry_proyecto pry
-            inner join t_pry_unidad_proyecto upr on pry.seqProyecto = upr.seqProyecto
-            where upr.seqTipoEsquema in (1,2,9)                   
+            inner join t_pry_unidad_proyecto upr on pry.seqProyecto = upr.seqProyecto                   
         ";
         $aptBd->execute($sql);
         $bolErrores = false; // no hubo errores
@@ -1329,8 +1328,7 @@ function copiarUnidades($aptBd, $seqCorte)
               upr.seqTipoEsquema
             from t_vee_proyecto pry
             inner join t_pry_unidad_proyecto upr on pry.seqProyecto = upr.seqProyecto
-            where upr.seqTipoEsquema in (1,2,9)
-            and pry.seqCorte = $seqCorte
+            where pry.seqCorte = $seqCorte
         ";
         $aptBd->execute($sql);
         $bolErrores = false; // no hubo errores
