@@ -1,19 +1,19 @@
 <?php
 
 chdir( __DIR__ );
-include ("./conexionLocal.php");
+include ("./conexion.php");
 include ("./funciones.php");
 include ("./funcionesVeedurias.php");
 echo "\r";
 
 $bolErrores = false; // HAY ERRORES true // NO HAY ERRORES false
-$aptLocal->BeginTrans();
+$aptBd->BeginTrans();
 
 /*****************************************************************************************
  * CREACION DEL CORTE
  *****************************************************************************************/
 
-$seqCorte = crearCorte( $aptLocal );
+$seqCorte = crearCorte( $aptBd );
 $bolErrores = ( intval( $seqCorte ) == 0 )? true : false;
 
 /*****************************************************************************************
@@ -21,7 +21,7 @@ $bolErrores = ( intval( $seqCorte ) == 0 )? true : false;
  *****************************************************************************************/
 
 if( $bolErrores == false ){
-    $arrHogares = obtenerHogares( $aptLocal );
+    $arrHogares = obtenerHogares( $aptBd );
     $bolErrores = ( empty( $arrHogares ) )? true : false;
 }
 
@@ -30,15 +30,15 @@ if( $bolErrores == false ){
  *****************************************************************************************/
 
 if( $bolErrores == false ) {
-    $bolErrores = copiarFormularios($aptLocal, $seqCorte, $arrHogares);
+    $bolErrores = copiarFormularios($aptBd, $seqCorte, $arrHogares);
 }
 
 if( $bolErrores == false ) {
-    $bolErrores = copiarCiudadanos($aptLocal, $seqCorte, $arrHogares);
+    $bolErrores = copiarCiudadanos($aptBd, $seqCorte, $arrHogares);
 }
 
 if( $bolErrores == false ) {
-    $bolErrores = armarHogar($aptLocal, $seqCorte, $arrHogares);
+    $bolErrores = armarHogar($aptBd, $seqCorte, $arrHogares);
 }
 
 /*****************************************************************************************
@@ -46,15 +46,15 @@ if( $bolErrores == false ) {
  *****************************************************************************************/
 
 if( $bolErrores == false ) {
-    $bolErrores = copiarDesembolso($aptLocal, $seqCorte, $arrHogares);
+    $bolErrores = copiarDesembolso($aptBd, $seqCorte, $arrHogares);
 }
 
 if( $bolErrores == false ) {
-    $bolErrores = copiarEscrituracion($aptLocal, $seqCorte, $arrHogares);
+    $bolErrores = copiarEscrituracion($aptBd, $seqCorte, $arrHogares);
 }
 
 if( $bolErrores == false ) {
-    $bolErrores = copiarSolicitudes($aptLocal, $seqCorte, $arrHogares);
+    $bolErrores = copiarSolicitudes($aptBd, $seqCorte, $arrHogares);
 }
 
 /*****************************************************************************************
@@ -62,19 +62,19 @@ if( $bolErrores == false ) {
  *****************************************************************************************/
 
 if( $bolErrores == false ) {
-    $bolErrores = copiarProyectos($aptLocal, $seqCorte);
+    $bolErrores = copiarProyectos($aptBd, $seqCorte);
 }
 
 if( $bolErrores == false ) {
-    $bolErrores = copiarUnidades($aptLocal, $seqCorte);
+    $bolErrores = copiarUnidades($aptBd, $seqCorte);
 }
 
 if( $bolErrores == false ) {
-    $bolErrores = copiarActosProyectos($aptLocal, $seqCorte);
+    $bolErrores = copiarActosProyectos($aptBd, $seqCorte);
 }
 
 if( $bolErrores == false ) {
-    $bolErrores = copiarUnidadesVinculadas($aptLocal, $seqCorte);
+    $bolErrores = copiarUnidadesVinculadas($aptBd, $seqCorte);
 }
 
 /*****************************************************************************************
@@ -82,12 +82,12 @@ if( $bolErrores == false ) {
  *****************************************************************************************/
 
 if( $bolErrores == false ){
-    $aptLocal->CommitTrans();
+    $aptBd->CommitTrans();
 }else{
-    $aptLocal->RollbackTrans();
+    $aptBd->RollbackTrans();
 }
 
-$aptLocal->Close();
+$aptBd->Close();
 mensajeLog("Fin de la creacion del corte de " . mes2texto(date("m")) . " " . date("Y") );
 
 ?>
