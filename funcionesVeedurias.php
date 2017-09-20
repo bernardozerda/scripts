@@ -160,7 +160,8 @@ function copiarFormularios($aptBd , $seqCorte , $arrHogares){
                     bolViabilidadLeasing,
                     valCartaLeasing,
                     numDuracionLeasing,
-                    seqConvenio
+                    seqConvenio,
+                    valComplementario
                 )
                     SELECT
                         $seqCorte,
@@ -262,7 +263,8 @@ function copiarFormularios($aptBd , $seqCorte , $arrHogares){
                         frm.bolViabilidadLeasing,
                         frm.valCartaLeasing,
                         frm.numDuracionLeasing,
-                        frm.seqConvenio
+                        frm.seqConvenio,
+                        frm.valComplementario
                     FROM
                         t_frm_formulario frm
                     WHERE
