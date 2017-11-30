@@ -11,7 +11,7 @@
     define("USUARIO_BD", "sdht_usuario");
     define("CLAVE_BD", "Ochochar*1");
     define("NOMBRE_BD", "sipive");
-    define("DESTINO_BACKUP_BD", "/home/sdvpruebas/backups/produccion");
+    define("DESTINO_BACKUP_BD", "/home/sdvpruebas/backups/baseDatos");
     define("DIAS_RETENCION", 180);
     define("DIA_BLOQUEADO", 1);
     
