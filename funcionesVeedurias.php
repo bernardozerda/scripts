@@ -835,6 +835,93 @@ function copiarEscrituracion($aptBd, $seqCorte, $arrHogares)
     return $bolErrores;
 }
 
+function copiarEstudioTitulos($aptBd, $seqCorte, $arrHogares)
+{
+    try {
+        mensajeLog("Copia la informacion de los estudios de titulos de desembolsos");
+        $sql = "
+            INSERT INTO t_vee_estudio_titulos(
+                seqEstudioTitulos,
+                seqDesembolsoVeeduria,
+                numEscrituraIdentificacion,
+                fchEscrituraIdentificacion,
+                numNotariaIdentificacion,
+                numEscrituraTitulo,
+                fchEscrituraTitulo,
+                numNotariaTitulo,
+                numFolioMatricula,
+                txtZonaMatricula,
+                fchMatricula,
+                bolSubsidioSDHT,
+                bolSubsidioFonvivienda,
+                numResolucionFonvivienda,
+                numAnoResolucionFonvivienda,
+                txtAprobo,
+                fchCreacion,
+                fchActualizacion,
+                txtCiudadTitulo,
+                txtCiudadIdentificacion,
+                txtElaboro
+            )
+            SELECT 
+                seqEstudioTitulos,
+                seqDesembolsoVeeduria,
+                numEscrituraIdentificacion,
+                fchEscrituraIdentificacion,
+                numNotariaIdentificacion,
+                numEscrituraTitulo,
+                fchEscrituraTitulo,
+                numNotariaTitulo,
+                numFolioMatricula,
+                txtZonaMatricula,
+                fchMatricula,
+                bolSubsidioSDHT,
+                bolSubsidioFonvivienda,
+                numResolucionFonvivienda,
+                numAnoResolucionFonvivienda,
+                txtAprobo,
+                fchCreacion,
+                fchActualizacion,
+                txtCiudadTitulo,
+                txtCiudadIdentificacion,
+                txtElaboro
+            FROM t_des_estudio_titulos tit
+            INNER JOIN t_vee_desembolso des ON tit.seqDesembolso = des.seqDesembolso
+            INNER JOIN t_vee_formulario frm ON des.seqFormularioVeeduria = frm.seqFormularioVeeduria AND frm.seqCorte = $seqCorte
+            WHERE frm.seqFormulario in (" . implode(",",$arrHogares) . ")     
+        ";
+        $aptBd->execute($sql);
+
+        $sql = "
+            insert into t_vee_adjuntos_titulos (
+                seqAdjuntoTitulosVeeduria,
+                seqAdjuntoTitulos,
+                seqTipoAdjunto,
+                seqEstudioTitulosVeeduria,
+                txtAdjunto
+            )
+            select
+                adj.seqAdjuntoTitulos,
+                adj.seqTipoAdjunto,
+                tit.seqEstudioTitulosVeeduria,
+                adj.txtAdjunto
+            from t_des_adjuntos_titulos adj
+            inner join t_vee_estudio_titulos tit on adj.seqEstudioTitulos = tit.seqEstudioTitulos
+            inner join t_vee_desembolso des on tit.seqDesembolsoVeeduria = des.seqDesembolsoVeeduria
+            inner join t_vee_formulario frm on des.seqFormularioVeeduria = frm.seqFormularioVeeduria and frm.seqCorte = $seqCorte
+            where frm.seqFormulario in (" . implode(",",$arrHogares) . ")
+        ";
+        $aptBd->execute($sql);
+
+        $bolErrores = false; // no hubo errores
+    }catch(Exception $objError){
+        mensajeLog( "Problemas al copiar los estudios de titulos" );
+        mensajeLog( $objError->getMessage() );
+        $bolErrores = true;
+    }
+    return $bolErrores;
+}
+
 function copiarSolicitudes($aptBd, $seqCorte, $arrHogares)
 {
     try {

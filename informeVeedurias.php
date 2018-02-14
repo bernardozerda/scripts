@@ -54,6 +54,10 @@ if( $bolErrores == false ) {
 }
 
 if( $bolErrores == false ) {
+    $bolErrores = copiarEstudioTitulos($aptBd, $seqCorte, $arrHogares);
+}
+
+if( $bolErrores == false ) {
     $bolErrores = copiarSolicitudes($aptBd, $seqCorte, $arrHogares);
 }
 
