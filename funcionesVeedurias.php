@@ -894,7 +894,6 @@ function copiarEstudioTitulos($aptBd, $seqCorte, $arrHogares)
 
         $sql = "
             insert into t_vee_adjuntos_titulos (
-                seqAdjuntoTitulosVeeduria,
                 seqAdjuntoTitulos,
                 seqTipoAdjunto,
                 seqEstudioTitulosVeeduria,
