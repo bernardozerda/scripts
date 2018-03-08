@@ -93,6 +93,12 @@
         }
     }
 
+    $sql = "delete from t_aad_acto_administrativo where seqCaracteristica in (4,7,5,6,18,19,49,50,91,92,140,141)";
+    $aptBd->execute($sql);
+
+    $sql = "delete from t_aad_caracteristica_acto where seqCaracteristica in (4,7,5,6,18,19,49,50,91,92,140,141);";
+    $aptBd->execute($sql);
+
     $aptBd->CommitTrans();
 
 ?>
