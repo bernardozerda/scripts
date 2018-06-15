@@ -13,7 +13,7 @@
     // CONEXION A LA BASE DE DATOS LOCAL
     try {
         $aptBd = ADONewConnection("mysqli");
-        $aptBd->PConnect("localhost", "sdht_usuario", "Ochochar*1", "sipive");
+        $aptBd->PConnect("192.168.6.214", "sdht_usuario", "Ochochar*1", "sipive");
         $aptBd->SetFetchMode(ADODB_FETCH_ASSOC); // solo respuestas con arreglos asociativos
         $aptBd->execute("SET CHARSET utf8");
         $aptBd->execute("set sql_mode=''");
