@@ -42,6 +42,9 @@ if( $txtBaseDatosDestino != ""){
     		mensajeLog("Montando funciones");
     		$txtComando = "mysql -u" . USUARIO_BD . " -p" . CLAVE_BD . " " . $txtBaseDatosDestino . " < /home/sdvpruebas/backups/scripts/funciones.sql";
 
+			mensajeLog("Montando vistas");
+			$txtComando = "mysql -u" . USUARIO_BD . " -p" . CLAVE_BD . " " . $txtBaseDatosDestino . " < /home/sdvpruebas/backups/scripts/vistas.sql";
+
 	}else{
     		mensajeLog("No se encontró el backup " . $txtNombreArchivoTar);
 	}
