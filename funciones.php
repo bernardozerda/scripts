@@ -7,7 +7,7 @@
      ***********************************************************/
     
     // CONSTANTES
-    define("SERVIDOR_PRODUCCION", "192.168.6.214");
+    define("SERVIDOR_PRODUCCION", "localhost");
     define("USUARIO_BD", "sdht_usuario");
     define("CLAVE_BD", "Ochochar*1");
     define("NOMBRE_BD", "sipive");
